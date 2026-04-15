@@ -1,6 +1,6 @@
 const express = require("express");
 
-// VNX-NODE-004: Express app without helmet middleware
+// VNX-NODE-004: Express app missing security header middleware
 const app = express();
 
 app.get("/", (req, res) => {
