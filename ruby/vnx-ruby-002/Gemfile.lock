@@ -1,0 +1,13 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    sinatra (3.0.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  sinatra
+
+BUNDLED WITH
+   2.4.0
