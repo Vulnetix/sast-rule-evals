@@ -1,0 +1,5 @@
+[build-system]
+requires = []
+
+[tool.ruff.lint.flake8-builtins]
+strict-checking = true

@@ -1,7 +1,5 @@
-# Sample for Ruff rule S604: call-with-shell-equals-true
-# This file is designed to trigger the S604 rule.
-# Run: ruff check --select S604 <this_file>
+import my_custom_subprocess
 
-import os
-os.system("ls -la")  # S604
+user_input = input("Enter a command: ")
+my_custom_subprocess.run(user_input, shell=True)
 

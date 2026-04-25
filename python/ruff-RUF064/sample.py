@@ -1,5 +1,3 @@
-# Sample for Ruff rule RUF064: non-octal-permissions
-# This file is designed to trigger the RUF064 rule.
-# Run: ruff check --select RUF064 <this_file>
+import os
 
-os.chmod("foo", 644)
+os.chmod("file.txt", 644)  # RUF064: should be 0o644 (octal)

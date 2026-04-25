@@ -1,0 +1,3 @@
+from typing import Union
+
+def foo(x: Union[type[int], type[str]]) -> None: ...

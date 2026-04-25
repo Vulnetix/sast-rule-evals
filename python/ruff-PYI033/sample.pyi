@@ -1,0 +1,1 @@
+x = None  # type: int

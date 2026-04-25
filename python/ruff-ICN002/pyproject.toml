@@ -1,2 +1,5 @@
 [build-system]
 requires = []
+
+[tool.ruff.lint.flake8-import-conventions.banned-aliases]
+"os.path" = ["osp"]

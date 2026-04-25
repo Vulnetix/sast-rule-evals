@@ -1,25 +1,22 @@
-# Sample for Ruff rule PLR0904: too-many-public-methods
-# This file is designed to trigger the PLR0904 rule.
-# Run: ruff check --select PLR0904 <this_file>
-
-class Linter:
-    def __init__(self):
-        pass
-
-    def pylint(self):
-        pass
-
-    def pylint_settings(self):
-        pass
-
-    def flake8(self):
-        pass
-
-    def flake8_settings(self):
-        pass
-
-    def pydocstyle(self):
-        pass
-
-    def pydocstyle_settings(self):
-        pass
+class BigClass:
+    def method_01(self): pass
+    def method_02(self): pass
+    def method_03(self): pass
+    def method_04(self): pass
+    def method_05(self): pass
+    def method_06(self): pass
+    def method_07(self): pass
+    def method_08(self): pass
+    def method_09(self): pass
+    def method_10(self): pass
+    def method_11(self): pass
+    def method_12(self): pass
+    def method_13(self): pass
+    def method_14(self): pass
+    def method_15(self): pass
+    def method_16(self): pass
+    def method_17(self): pass
+    def method_18(self): pass
+    def method_19(self): pass
+    def method_20(self): pass
+    def method_21(self): pass

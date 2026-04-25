@@ -1,5 +1,1 @@
-# Sample for Ruff rule B912: map-without-explicit-strict
-# This file is designed to trigger the B912 rule.
-# Run: ruff check --select B912 <this_file>
-
-map(f, a, b)
+list(map(lambda x, y: x + y, [1, 2], [3, 4]))

@@ -1,7 +1,8 @@
-# Sample for Ruff rule TC001: typing-only-first-party-import
-# This file is designed to trigger the TC001 rule.
-# Run: ruff check --select TC001 <this_file>
+from __future__ import annotations
 
-from typing import TYPE_CHECKING
-import os  # TC001: should be in TYPE_CHECKING block
+from mypackage import Container
+
+
+def func(sized: Container) -> int:
+    return len(sized)
 

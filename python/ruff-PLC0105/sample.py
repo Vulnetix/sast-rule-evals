@@ -1,7 +1,3 @@
-# Sample for Ruff rule PLC0105: type-name-incorrect-variance
-# This file is designed to trigger the PLC0105 rule.
-# Run: ruff check --select PLC0105 <this_file>
-
 from typing import TypeVar
-T = TypeVar("MyT")  # PLC0105: name mismatch
 
+T_co = TypeVar("T_co", contravariant=True)  # PLC0105: name says co but is contra

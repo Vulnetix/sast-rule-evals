@@ -1,8 +1,6 @@
-# Sample for Ruff rule S303: suspicious-insecure-hash-usage
-# This file is designed to trigger the S303 rule.
-# Run: ruff check --select S303 <this_file>
+from cryptography.hazmat.primitives import hashes
 
-import hashlib
-h = hashlib.md5(b"data")  # S303: weak hash
-h2 = hashlib.sha1(b"data")
+digest = hashes.Hash(hashes.MD5())
+digest.update(b"Hello, world!")
+digest.finalize()
 

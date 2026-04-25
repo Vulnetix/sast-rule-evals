@@ -1,0 +1,3 @@
+from typing import Literal, Union
+
+def foo(x: Union[Literal["a"], Literal["b"]]) -> None: ...

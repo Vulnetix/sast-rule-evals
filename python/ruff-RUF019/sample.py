@@ -1,8 +1,3 @@
-# Sample for Ruff rule RUF019: unnecessary-key-check
-# This file is designed to trigger the RUF019 rule.
-# Run: ruff check --select RUF019 <this_file>
-
-d = {"key": "value"}
-if "key" in d:
-    val = d["key"]  # RUF019: unnecessary key check
-
+dct = {"key": "value"}
+if "key" in dct and dct["key"]:  # RUF019: use dct.get("key") instead
+    pass

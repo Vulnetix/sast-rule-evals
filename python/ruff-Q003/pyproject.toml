@@ -1,2 +1,5 @@
 [build-system]
 requires = []
+
+[tool.ruff.lint.flake8-quotes]
+inline-quotes = "double"

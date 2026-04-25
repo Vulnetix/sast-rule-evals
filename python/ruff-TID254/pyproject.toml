@@ -1,2 +1,8 @@
 [build-system]
 requires = []
+
+[tool.ruff]
+target-version = "py315"
+
+[tool.ruff.lint.flake8-tidy-imports]
+require-lazy = ["typing"]

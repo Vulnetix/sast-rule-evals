@@ -1,2 +1,5 @@
 [build-system]
 requires = []
+[tool.ruff.lint]
+select = ["D203"]
+ignore = ["D211"]

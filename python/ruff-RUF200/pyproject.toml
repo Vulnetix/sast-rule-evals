@@ -1,0 +1,4 @@
+[project]
+name = "crab"
+version = "1.0.0"
+authors = ["Ferris the Crab <ferris@example.org>"]

@@ -1,0 +1,6 @@
+import sys
+
+if sys.version_info < (3, 10):
+    def read_data(x, *, preserve_order: bool = ...) -> None: ...
+else:
+    def read_data(x) -> None: ...

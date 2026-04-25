@@ -1,5 +1,3 @@
-# Sample for Ruff rule RUF032: decimal-from-float-literal
-# This file is designed to trigger the RUF032 rule.
-# Run: ruff check --select RUF032 <this_file>
+from decimal import Decimal
 
-num = Decimal(1.2345)
+x = Decimal(1.5)  # RUF032: use Decimal("1.5") instead of float literal
