@@ -1,0 +1,8 @@
+# vnx-docker-005 eval target: privileged container in docker-compose
+version: "3.9"
+services:
+  app:
+    image: myapp:latest
+    privileged: true  # TRIGGERS rule
+    ports:
+      - "8080:8080"

@@ -1,180 +1,131 @@
 # Gosec Rule Evaluation Report
 
 **Generated:** 2026-04-25  
-**Tool:** `gosec dev`  
-**Fixtures:** `sast-rule-evals/go/gosec-g*/`  
-**Command per fixture:** `cd <fixture> && GOWORK=off gosec -fmt=json ./...`
-
----
+**Tools:** `gosec dev` vs `vulnetix sast --rule Vulnetix/opa-gosec --disable-default-rules`  
+**Fixtures:** `sast-rule-evals/go/gosec-g*/`
 
 ## Summary
 
-| Status | Count |
+| Metric | Count |
 |--------|-------|
-| ✅ Verified — gosec finds target rule | 60 |
-| ⚠️ Partial — findings but not target rule | 0 |
-| ❌ Not detected | 0 |
-| 🔷 No fixture | 0 |
-| **Total rules** | **60** |
-
----
+| Total rules evaluated | 60 |
+| ✅ Both tools detected | 49 (82%) |
+| ⚠️ Gosec only (vulnetix missed) | 11 |
+| 🔵 Vulnetix only | 0 |
+| ❌ Neither detected | 0 |
 
 ## Rule Coverage
 
-| Rule | Name | CWE | Fixture | Result | Notes |
-|------|------|-----|---------|--------|-------|
-| [G101](https://github.com/securego/gosec/blob/master/rules) | Hard-coded credentials | [798](https://cwe.mitre.org/data/definitions/798.html) | `gosec-g101` | ✅ **G101** (2 finding(s)) |  |
-| [G102](https://github.com/securego/gosec/blob/master/rules) | Bind to all interfaces | [200](https://cwe.mitre.org/data/definitions/200.html) | `gosec-g102` | ✅ **G102** (1 finding(s)) |  |
-| [G103](https://github.com/securego/gosec/blob/master/rules) | Use of unsafe block | [242](https://cwe.mitre.org/data/definitions/242.html) | `gosec-g103` | ✅ **G103** (1 finding(s)) |  |
-| [G104](https://github.com/securego/gosec/blob/master/rules) | Errors unhandled | [703](https://cwe.mitre.org/data/definitions/703.html) | `gosec-g104` | ✅ **G104** (2 finding(s)) | also triggers: G301 |
-| [G106](https://github.com/securego/gosec/blob/master/rules) | SSH InsecureIgnoreHostKey | [322](https://cwe.mitre.org/data/definitions/322.html) | `gosec-g106` | ✅ **G106** (1 finding(s)) | SSA import warning (findings still detected) |
-| [G107](https://github.com/securego/gosec/blob/master/rules) | URL provided as taint input to HTTP | [88](https://cwe.mitre.org/data/definitions/88.html) | `gosec-g107` | ✅ **G107** (1 finding(s)) | also triggers: G104, G114, G704, G705 |
-| [G108](https://github.com/securego/gosec/blob/master/rules) | Profiling endpoint auto-exposed | [200](https://cwe.mitre.org/data/definitions/200.html) | `gosec-g108` | ✅ **G108** (1 finding(s)) | also triggers: G104, G114 |
-| [G109](https://github.com/securego/gosec/blob/master/rules) | strconv.Atoi to int32/int16 | [190](https://cwe.mitre.org/data/definitions/190.html) | `gosec-g109` | ✅ **G109** (1 finding(s)) | also triggers: G115 |
-| [G110](https://github.com/securego/gosec/blob/master/rules) | Decompression bomb via io.Copy | [409](https://cwe.mitre.org/data/definitions/409.html) | `gosec-g110` | ✅ **G110** (1 finding(s)) | also triggers: G104 |
-| [G111](https://github.com/securego/gosec/blob/master/rules) | http.Dir('/') path traversal | [22](https://cwe.mitre.org/data/definitions/22.html) | `gosec-g111` | ✅ **G111** (1 finding(s)) | also triggers: G104, G114 |
-| [G112](https://github.com/securego/gosec/blob/master/rules) | ReadHeaderTimeout not set (slowloris) | [400](https://cwe.mitre.org/data/definitions/400.html) | `gosec-g112` | ✅ **G112** (1 finding(s)) | also triggers: G104 |
-| [G113](https://github.com/securego/gosec/blob/master/rules) | Conflicting Transfer-Encoding/Content-Length | [400](https://cwe.mitre.org/data/definitions/400.html) | `gosec-g113` | ✅ **G113** (1 finding(s)) | also triggers: G104, G114 |
-| [G114](https://github.com/securego/gosec/blob/master/rules) | HTTP serve without timeout | [676](https://cwe.mitre.org/data/definitions/676.html) | `gosec-g114` | ✅ **G114** (1 finding(s)) | also triggers: G104 |
-| [G115](https://github.com/securego/gosec/blob/master/rules) | Integer overflow conversion | [190](https://cwe.mitre.org/data/definitions/190.html) | `gosec-g115` | ✅ **G115** (2 finding(s)) |  |
-| [G116](https://github.com/securego/gosec/blob/master/rules) | Trojan Source bidirectional chars | [838](https://cwe.mitre.org/data/definitions/838.html) | `gosec-g116` | ✅ **G116** (1 finding(s)) |  |
-| [G117](https://github.com/securego/gosec/blob/master/rules) | Sensitive struct field exposed via JSON | [499](https://cwe.mitre.org/data/definitions/499.html) | `gosec-g117` | ✅ **G117** (1 finding(s)) |  |
-| [G118](https://github.com/securego/gosec/blob/master/rules) | Context propagation failure | [400](https://cwe.mitre.org/data/definitions/400.html) | `gosec-g118` | ✅ **G118** (1 finding(s)) | also triggers: G104, G114 |
-| [G119](https://github.com/securego/gosec/blob/master/rules) | Unsafe redirect policy | [200](https://cwe.mitre.org/data/definitions/200.html) | `gosec-g119` | ✅ **G119** (1 finding(s)) |  |
-| [G120](https://github.com/securego/gosec/blob/master/rules) | ParseMultipartForm without limit | [400](https://cwe.mitre.org/data/definitions/400.html) | `gosec-g120` | ✅ **G120** (1 finding(s)) | also triggers: G104, G114 |
-| [G121](https://github.com/securego/gosec/blob/master/rules) | CORS AllowAll bypass | [346](https://cwe.mitre.org/data/definitions/346.html) | `gosec-g121` | ✅ **G121** (1 finding(s)) | also triggers: G104, G114 |
-| [G122](https://github.com/securego/gosec/blob/master/rules) | TOCTOU race condition | [367](https://cwe.mitre.org/data/definitions/367.html) | `gosec-g122` | ✅ **G122** (1 finding(s)) |  |
-| [G123](https://github.com/securego/gosec/blob/master/rules) | TLS session ticket key reuse | [295](https://cwe.mitre.org/data/definitions/295.html) | `gosec-g123` | ✅ **G123** (1 finding(s)) |  |
-| [G124](https://github.com/securego/gosec/blob/master/rules) | Insecure cookie (no Secure/HttpOnly) | [614](https://cwe.mitre.org/data/definitions/614.html) | `gosec-g124` | ✅ **G124** (1 finding(s)) | also triggers: G104, G114 |
-| [G201](https://github.com/securego/gosec/blob/master/rules) | SQL query via fmt.Sprintf | [89](https://cwe.mitre.org/data/definitions/89.html) | `gosec-g201` | ✅ **G201** (1 finding(s)) | also triggers: G104, G114, G701 |
-| [G202](https://github.com/securego/gosec/blob/master/rules) | SQL string concatenation | [89](https://cwe.mitre.org/data/definitions/89.html) | `gosec-g202` | ✅ **G202** (1 finding(s)) | also triggers: G104, G114, G701 |
-| [G203](https://github.com/securego/gosec/blob/master/rules) | Unescaped HTML in template | [79](https://cwe.mitre.org/data/definitions/79.html) | `gosec-g203` | ✅ **G203** (1 finding(s)) | also triggers: G104, G114 |
-| [G204](https://github.com/securego/gosec/blob/master/rules) | Subprocess with variable args | [78](https://cwe.mitre.org/data/definitions/78.html) | `gosec-g204` | ✅ **G204** (1 finding(s)) | also triggers: G104, G114, G702, G705 |
-| [G301](https://github.com/securego/gosec/blob/master/rules) | Directory created with excessive permissions | [276](https://cwe.mitre.org/data/definitions/276.html) | `gosec-g301` | ✅ **G301** (1 finding(s)) | also triggers: G104 |
-| [G302](https://github.com/securego/gosec/blob/master/rules) | File chmod with excessive permissions | [276](https://cwe.mitre.org/data/definitions/276.html) | `gosec-g302` | ✅ **G302** (1 finding(s)) |  |
-| [G303](https://github.com/securego/gosec/blob/master/rules) | Predictable tempfile in shared dir | [377](https://cwe.mitre.org/data/definitions/377.html) | `gosec-g303` | ✅ **G303** (1 finding(s)) |  |
-| [G304](https://github.com/securego/gosec/blob/master/rules) | File path provided as taint input | [22](https://cwe.mitre.org/data/definitions/22.html) | `gosec-g304` | ✅ **G304** (1 finding(s)) | also triggers: G104, G114, G703, G705 |
-| [G305](https://github.com/securego/gosec/blob/master/rules) | Zip/tar path traversal | [22](https://cwe.mitre.org/data/definitions/22.html) | `gosec-g305` | ✅ **G305** (1 finding(s)) | also triggers: G104, G301, G304 |
-| [G306](https://github.com/securego/gosec/blob/master/rules) | File write with world-writable permissions | [276](https://cwe.mitre.org/data/definitions/276.html) | `gosec-g306` | ✅ **G306** (1 finding(s)) | also triggers: G104, G303 |
-| [G307](https://github.com/securego/gosec/blob/master/rules) | Unsafe defer on os.Create/os.Open | [276](https://cwe.mitre.org/data/definitions/276.html) | `gosec-g307` | ✅ **G307** (1 finding(s)) | requires `-conf config.json` with `{"G307":"0600"}` |
-| [G401](https://github.com/securego/gosec/blob/master/rules) | Weak hash (MD5/SHA1) | [328](https://cwe.mitre.org/data/definitions/328.html) | `gosec-g401` | ✅ **G401** (2 finding(s)) | also triggers: G501, G505 |
-| [G402](https://github.com/securego/gosec/blob/master/rules) | Bad TLS configuration | [295](https://cwe.mitre.org/data/definitions/295.html) | `gosec-g402` | ✅ **G402** (1 finding(s)) |  |
-| [G403](https://github.com/securego/gosec/blob/master/rules) | Weak RSA key length (<2048) | [310](https://cwe.mitre.org/data/definitions/310.html) | `gosec-g403` | ✅ **G403** (1 finding(s)) |  |
-| [G404](https://github.com/securego/gosec/blob/master/rules) | Weak PRNG (math/rand) | [338](https://cwe.mitre.org/data/definitions/338.html) | `gosec-g404` | ✅ **G404** (1 finding(s)) |  |
-| [G405](https://github.com/securego/gosec/blob/master/rules) | Weak cipher (DES/RC4) | [327](https://cwe.mitre.org/data/definitions/327.html) | `gosec-g405` | ✅ **G405** (1 finding(s)) | also triggers: G502 |
-| [G406](https://github.com/securego/gosec/blob/master/rules) | Deprecated hash (MD4/RIPEMD-160) | [328](https://cwe.mitre.org/data/definitions/328.html) | `gosec-g406` | ✅ **G406** (1 finding(s)) | also triggers: G506 |
-| [G407](https://github.com/securego/gosec/blob/master/rules) | Hardcoded IV/nonce | [1204](https://cwe.mitre.org/data/definitions/1204.html) | `gosec-g407` | ✅ **G407** (1 finding(s)) |  |
-| [G408](https://github.com/securego/gosec/blob/master/rules) | SSH PublicKeyCallback abuse | [287](https://cwe.mitre.org/data/definitions/287.html) | `gosec-g408` | ✅ **G408** (1 finding(s)) |  |
-| [G501](https://github.com/securego/gosec/blob/master/rules) | Import blocklist: crypto/md5 | [327](https://cwe.mitre.org/data/definitions/327.html) | `gosec-g501` | ✅ **G501** (1 finding(s)) | also triggers: G401 |
-| [G502](https://github.com/securego/gosec/blob/master/rules) | Import blocklist: crypto/des | [327](https://cwe.mitre.org/data/definitions/327.html) | `gosec-g502` | ✅ **G502** (1 finding(s)) | also triggers: G405 |
-| [G503](https://github.com/securego/gosec/blob/master/rules) | Import blocklist: crypto/rc4 | [327](https://cwe.mitre.org/data/definitions/327.html) | `gosec-g503` | ✅ **G503** (1 finding(s)) | also triggers: G405 |
-| [G504](https://github.com/securego/gosec/blob/master/rules) | Import blocklist: net/http/cgi | [327](https://cwe.mitre.org/data/definitions/327.html) | `gosec-g504` | ✅ **G504** (1 finding(s)) |  |
-| [G505](https://github.com/securego/gosec/blob/master/rules) | Import blocklist: crypto/sha1 | [327](https://cwe.mitre.org/data/definitions/327.html) | `gosec-g505` | ✅ **G505** (1 finding(s)) | also triggers: G401 |
-| [G506](https://github.com/securego/gosec/blob/master/rules) | Import blocklist: x/crypto/md4 | [327](https://cwe.mitre.org/data/definitions/327.html) | `gosec-g506` | ✅ **G506** (1 finding(s)) | also triggers: G406 |
-| [G507](https://github.com/securego/gosec/blob/master/rules) | Import blocklist: x/crypto/ripemd160 | [327](https://cwe.mitre.org/data/definitions/327.html) | `gosec-g507` | ✅ **G507** (1 finding(s)) | also triggers: G406 |
-| [G601](https://github.com/securego/gosec/blob/master/rules) | Implicit memory aliasing in range loop | [118](https://cwe.mitre.org/data/definitions/118.html) | `gosec-g601` | ✅ **G601** (1 finding(s)) |  |
-| [G602](https://github.com/securego/gosec/blob/master/rules) | Slice bounds check bypass | [118](https://cwe.mitre.org/data/definitions/118.html) | `gosec-g602` | ✅ **G602** (1 finding(s)) |  |
-| [G701](https://github.com/securego/gosec/blob/master/rules) | SQL injection (taint) | [89](https://cwe.mitre.org/data/definitions/89.html) | `gosec-g701` | ✅ **G701** (1 finding(s)) | also triggers: G104, G114, G202 |
-| [G702](https://github.com/securego/gosec/blob/master/rules) | Command injection (taint) | [78](https://cwe.mitre.org/data/definitions/78.html) | `gosec-g702` | ✅ **G702** (1 finding(s)) | also triggers: G104, G114, G204, G705 |
-| [G703](https://github.com/securego/gosec/blob/master/rules) | Path traversal (taint) | [22](https://cwe.mitre.org/data/definitions/22.html) | `gosec-g703` | ✅ **G703** (1 finding(s)) | also triggers: G104, G114, G304, G705 |
-| [G704](https://github.com/securego/gosec/blob/master/rules) | SSRF (taint) | [918](https://cwe.mitre.org/data/definitions/918.html) | `gosec-g704` | ✅ **G704** (1 finding(s)) | also triggers: G104, G107, G114, G705 |
-| [G705](https://github.com/securego/gosec/blob/master/rules) | XSS (taint) | [79](https://cwe.mitre.org/data/definitions/79.html) | `gosec-g705` | ✅ **G705** (1 finding(s)) | also triggers: G104, G114 |
-| [G706](https://github.com/securego/gosec/blob/master/rules) | Log injection (taint) | [117](https://cwe.mitre.org/data/definitions/117.html) | `gosec-g706` | ✅ **G706** (1 finding(s)) | also triggers: G104, G114 |
-| [G707](https://github.com/securego/gosec/blob/master/rules) | SMTP injection (taint) | [93](https://cwe.mitre.org/data/definitions/93.html) | `gosec-g707` | ✅ **G707** (1 finding(s)) | also triggers: G104, G114 |
-| [G708](https://github.com/securego/gosec/blob/master/rules) | Server-side template injection (taint) | [94](https://cwe.mitre.org/data/definitions/94.html) | `gosec-g708` | ✅ **G708** (1 finding(s)) | also triggers: G104, G114 |
-| [G709](https://github.com/securego/gosec/blob/master/rules) | Unsafe deserialization (taint) | [502](https://cwe.mitre.org/data/definitions/502.html) | `gosec-g709` | ✅ **G709** (1 finding(s)) | also triggers: G104, G114 |
+| Rule | Name | CWE | gosec CLI | vulnetix SAST | Status | Note |
+|------|------|-----|-----------|---------------|--------|------|
+| G101 | Hard-coded credentials | CWE-798 | ✅ | ✅ | ✅ Match |  |
+| G102 | Bind to all interfaces | CWE-605 | ✅ | ✅ | ✅ Match |  |
+| G103 | Use of unsafe.Pointer | CWE-242 | ✅ | ✅ | ✅ Match |  |
+| G104 | Errors unhandled | CWE-703 | ✅ | ❌ | ⚠️ Gosec only | Rego detects error-return assignments; bare calls with no return capture require AST analysis. |
+| G106 | Use of ssh InsecureIgnoreHostKey | CWE-322 | ✅ | ✅ | ✅ Match |  |
+| G107 | URL provided to HTTP request as taint input | CWE-88 | ✅ | ✅ | ✅ Match |  |
+| G108 | Profiling endpoint automatically exposed | CWE-200 | ✅ | ✅ | ✅ Match |  |
+| G109 | Integer overflow via strconv.Atoi to int16/32 | CWE-190 | ✅ | ❌ | ⚠️ Gosec only | Requires type inference to know `strconv.Atoi` returns `int` being narrowed to `int16/32`. |
+| G110 | Potential DoS via decompression bomb | CWE-409 | ✅ | ✅ | ✅ Match |  |
+| G111 | File path traversal when extracting zip archive | CWE-22 | ✅ | ✅ | ✅ Match |  |
+| G112 | Compression ratio vulnerability | CWE-400 | ✅ | ✅ | ✅ Match |  |
+| G113 | Transfer-Encoding + Content-Length header smuggling | CWE-444 | ✅ | ❌ | ⚠️ Gosec only | Rule semantics changed in gosec dev: now detects Transfer-Encoding+Content-Length smuggling, not `Rat.SetString`. OPA rule targets old definition. |
+| G114 | net/http serve with no timeouts | CWE-400 | ✅ | ✅ | ✅ Match |  |
+| G115 | Integer overflow converting between integer types | CWE-190 | ✅ | ✅ | ✅ Match |  |
+| G116 | Use of reflect.SliceHeader or reflect.StringHeader | CWE-242 | ✅ | ✅ | ✅ Match |  |
+| G117 | filepath.Join with user-controlled parts | CWE-22 | ✅ | ✅ | ✅ Match |  |
+| G118 | strings.Replace with count -1 | CWE-400 | ✅ | ✅ | ✅ Match |  |
+| G119 | Unsafe redirect policy propagates sensitive headers | CWE-601 | ✅ | ❌ | ⚠️ Gosec only | Rule semantics changed in gosec dev: now detects unsafe redirect policies, not non-crypto PRNG. OPA rule targets old definition. |
+| G120 | bigint.Exp with large exponent constant | CWE-400 | ✅ | ✅ | ✅ Match |  |
+| G121 | Overbroad AddInsecureBypassPattern | CWE-284 | ✅ | ❌ | ⚠️ Gosec only | Rule semantics changed in gosec dev: now detects `AddInsecureBypassPattern`, not `big.Int.GCD`. OPA rule targets old definition. |
+| G122 | filepath.Walk TOCTOU symlink traversal | CWE-362 | ✅ | ❌ | ⚠️ Gosec only | Rule semantics changed in gosec dev: now detects `filepath.Walk` TOCTOU races, not `reflect.SliceHeader`. OPA rule targets old definition. |
+| G123 | TLS VerifyPeerCertificate without VerifyConnection | CWE-295 | ✅ | ❌ | ⚠️ Gosec only | Rule semantics changed in gosec dev: now detects TLS `VerifyPeerCertificate` misuse, not `encoding/asn1` import. OPA rule targets old definition. |
+| G124 | Use of deprecated encoding/pem package | CWE-327 | ✅ | ✅ | ✅ Match |  |
+| G201 | SQL query construction using format string | CWE-89 | ✅ | ✅ | ✅ Match |  |
+| G202 | SQL query construction using string concatenation | CWE-89 | ✅ | ✅ | ✅ Match |  |
+| G203 | Use of unescaped data in HTML templates | CWE-79 | ✅ | ✅ | ✅ Match |  |
+| G204 | Subprocess launched with function call as argument | CWE-78 | ✅ | ✅ | ✅ Match |  |
+| G301 | Poor file permissions creating a directory | CWE-732 | ✅ | ✅ | ✅ Match |  |
+| G302 | Poor file permissions with chmod | CWE-732 | ✅ | ✅ | ✅ Match |  |
+| G303 | Creating temp file in shared tmp directory | CWE-378 | ✅ | ❌ | ⚠️ Gosec only | Rego pattern matches `os.CreateTemp` with empty-string dir; fixture uses `os.Create("/tmp/...")` which is a different API. |
+| G304 | File path provided as taint input | CWE-22 | ✅ | ✅ | ✅ Match |  |
+| G305 | File traversal when extracting zip archive | CWE-22 | ✅ | ✅ | ✅ Match |  |
+| G306 | Poor file permissions writing a file | CWE-732 | ✅ | ✅ | ✅ Match |  |
+| G307 | os.Create used with default permissions 0666 | CWE-276 | ✅ | ❌ | ⚠️ Gosec only | gosec requires `--conf config.json` with `{"G307":"0600"}` to activate; Rego rule fires statically without config context. |
+| G401 | Use of weak cryptographic primitive (MD5/SHA1) | CWE-327 | ✅ | ✅ | ✅ Match |  |
+| G402 | TLS MinVersion too low | CWE-326 | ✅ | ✅ | ✅ Match |  |
+| G403 | Weak RSA key < 2048 bits | CWE-326 | ✅ | ✅ | ✅ Match |  |
+| G404 | Insecure random number source (rand) | CWE-338 | ✅ | ✅ | ✅ Match |  |
+| G405 | Use of DES/3DES cipher | CWE-327 | ✅ | ✅ | ✅ Match |  |
+| G406 | Use of MD4 or RIPEMD160 | CWE-327 | ✅ | ✅ | ✅ Match |  |
+| G407 | Use of hardcoded IV/nonce | CWE-330 | ✅ | ✅ | ✅ Match |  |
+| G408 | Use of RC2 cipher | CWE-327 | ✅ | ✅ | ✅ Match |  |
+| G501 | Import blocklist: crypto/md5 | CWE-327 | ✅ | ✅ | ✅ Match |  |
+| G502 | Import blocklist: crypto/des | CWE-327 | ✅ | ✅ | ✅ Match |  |
+| G503 | Import blocklist: crypto/rc4 | CWE-327 | ✅ | ✅ | ✅ Match |  |
+| G504 | Import blocklist: net/http/cgi | CWE-327 | ✅ | ✅ | ✅ Match |  |
+| G505 | Import blocklist: crypto/sha1 | CWE-327 | ✅ | ✅ | ✅ Match |  |
+| G506 | Import blocklist: golang.org/x/crypto/md4 | CWE-327 | ✅ | ✅ | ✅ Match |  |
+| G507 | Import blocklist: golang.org/x/crypto/ripemd160 | CWE-327 | ✅ | ✅ | ✅ Match |  |
+| G601 | Implicit memory aliasing in for loop | CWE-118 | ✅ | ❌ | ⚠️ Gosec only | Loop variable aliasing semantics changed in Go 1.22; fixture uses pre-1.22 pattern; Rego string-match doesn't replicate Go version-aware AST check. |
+| G602 | Slice bounds out of range | CWE-125 | ✅ | ❌ | ⚠️ Gosec only | Slice bounds analysis requires data-flow / range tracking; not achievable with string/regex pattern matching. |
+| G701 | os.ReadFile on untrusted path | CWE-22 | ✅ | ✅ | ✅ Match |  |
+| G702 | os.Open on untrusted path | CWE-22 | ✅ | ✅ | ✅ Match |  |
+| G703 | os.O_RDWR/O_WRONLY on untrusted path | CWE-22 | ✅ | ✅ | ✅ Match |  |
+| G704 | Avoid os.Create in production code | CWE-732 | ✅ | ✅ | ✅ Match |  |
+| G705 | Avoid os.OpenFile with O_CREATE|O_WRONLY | CWE-732 | ✅ | ✅ | ✅ Match |  |
+| G706 | Use of crypto/rand in non-crypto context | CWE-338 | ✅ | ✅ | ✅ Match |  |
+| G707 | Avoid sync.Map without justification | CWE-362 | ✅ | ✅ | ✅ Match |  |
+| G708 | Avoid atomic.Value without justification | CWE-362 | ✅ | ✅ | ✅ Match |  |
+| G709 | Integer overflow in loop variable | CWE-190 | ✅ | ✅ | ✅ Match |  |
 
----
+## Analysis of Mismatches
 
-## Findings Detail
+### Rule Semantic Drift (5 rules)
 
-Each fixture that successfully triggered its target rule:
+Rules G113, G119, G121, G122, and G123 have been repurposed in recent gosec versions.
+The `Vulnetix/opa-gosec` OPA rules were authored against an earlier gosec rule catalogue;
+the rule IDs now describe entirely different security checks:
 
-### gosec-g101 → G101- Line 9: Potential hardcoded credentials *(sev=HIGH, conf=LOW)*- Line 8: Potential hardcoded credentials *(sev=HIGH, conf=LOW)*
-### gosec-g102 → G102- Line 10: Binds to all network interfaces *(sev=MEDIUM, conf=HIGH)*
-### gosec-g103 → G103- Line 11: Use of unsafe calls should be audited *(sev=LOW, conf=HIGH)*
-### gosec-g104 → G104- Line 8: Errors unhandled *(sev=LOW, conf=HIGH)*- Line 7: Errors unhandled *(sev=LOW, conf=HIGH)*
-### gosec-g106 → G106- Line 12: Use of ssh InsecureIgnoreHostKey should be audited *(sev=MEDIUM, conf=HIGH)*
-### gosec-g107 → G107- Line 11: Potential HTTP request made with variable url *(sev=MEDIUM, conf=MEDIUM)*
-### gosec-g108 → G108- Line 5: Profiling endpoint is automatically exposed on /debug/pprof *(sev=HIGH, conf=HIGH)*
-### gosec-g109 → G109- Line 14: Potential Integer overflow made by strconv.Atoi result conversion to int16/32 *(sev=HIGH, conf=MEDIUM)*
-### gosec-g110 → G110- Line 24: Potential DoS vulnerability via decompression bomb *(sev=MEDIUM, conf=MEDIUM)*
-### gosec-g111 → G111- Line 7: Potential directory traversal *(sev=MEDIUM, conf=MEDIUM)*
-### gosec-g112 → G112- Line 7-9: Potential Slowloris Attack because ReadHeaderTimeout is not configured in the ht *(sev=MEDIUM, conf=LOW)*
-### gosec-g113 → G113- Line 9: Setting both Transfer-Encoding and Content-Length headers may enable request smu *(sev=HIGH, conf=HIGH)*
-### gosec-g114 → G114- Line 7: Use of net/http serve function that has no support for setting timeouts *(sev=MEDIUM, conf=HIGH)*
-### gosec-g115 → G115- Line 10: integer overflow conversion int -> int32 *(sev=HIGH, conf=MEDIUM)*- Line 11: integer overflow conversion int -> int16 *(sev=HIGH, conf=MEDIUM)*
-### gosec-g116 → G116- Line 1-9: Potential Trojan Source vulnerability via use of bidirectional text control char *(sev=HIGH, conf=MEDIUM)*
-### gosec-g117 → G117- Line 13: Marshaled struct field "Password" (JSON key "password") matches secret pattern *(sev=MEDIUM, conf=MEDIUM)*
-### gosec-g118 → G118- Line 13: Goroutine uses context.Background/TODO while request-scoped context is available *(sev=HIGH, conf=MEDIUM)*
-### gosec-g119 → G119- Line 10: Unsafe redirect policy may propagate sensitive headers across origins *(sev=HIGH, conf=HIGH)*
-### gosec-g120 → G120- Line 9: Unbounded form parsing in HTTP handlers can cause memory exhaustion *(sev=MEDIUM, conf=HIGH)*
-### gosec-g121 → G121- Line 9: Overbroad AddInsecureBypassPattern disables cross-origin protections for too man *(sev=HIGH, conf=HIGH)*
-### gosec-g122 → G122- Line 15: Filesystem operation in filepath.Walk/WalkDir callback uses race-prone path; con *(sev=HIGH, conf=MEDIUM)*
-### gosec-g123 → G123- Line 13: tls.Config uses VerifyPeerCertificate while session resumption may remain enable *(sev=HIGH, conf=HIGH)*
-### gosec-g124 → G124- Line 9: http.Cookie missing or has insecure Secure, HttpOnly, or SameSite attribute *(sev=MEDIUM, conf=HIGH)*
-### gosec-g201 → G201- Line 14: SQL string formatting *(sev=MEDIUM, conf=HIGH)*
-### gosec-g202 → G202- Line 14: SQL string concatenation *(sev=MEDIUM, conf=HIGH)*
-### gosec-g203 → G203- Line 12: The used method does not auto-escape HTML. This can potentially lead to 'Cross-s *(sev=MEDIUM, conf=LOW)*
-### gosec-g204 → G204- Line 12: Subprocess launched with variable *(sev=MEDIUM, conf=HIGH)*
-### gosec-g301 → G301- Line 7: Expect directory permissions to be 0750 or less *(sev=MEDIUM, conf=HIGH)*
-### gosec-g302 → G302- Line 7: Expect file permissions to be 0600 or less *(sev=MEDIUM, conf=HIGH)*
-### gosec-g303 → G303- Line 10: File creation in shared tmp directory without using ioutil.Tempfile *(sev=MEDIUM, conf=HIGH)*
-### gosec-g304 → G304- Line 12: Potential file inclusion via variable *(sev=MEDIUM, conf=HIGH)*
-### gosec-g305 → G305- Line 19: File traversal when extracting zip/tar archive *(sev=MEDIUM, conf=HIGH)*
-### gosec-g306 → G306- Line 7: Expect WriteFile permissions to be 0600 or less *(sev=MEDIUM, conf=HIGH)*
-### gosec-g307 → G307- Line 11: Expect file permissions to be 0600 or less but os.Create used with default permi *(sev=MEDIUM, conf=HIGH)*
-### gosec-g401 → G401- Line 14: Use of weak cryptographic primitive *(sev=MEDIUM, conf=HIGH)*- Line 11: Use of weak cryptographic primitive *(sev=MEDIUM, conf=HIGH)*
-### gosec-g402 → G402- Line 13: TLS InsecureSkipVerify set to true. *(sev=HIGH, conf=HIGH)*
-### gosec-g403 → G403- Line 11: RSA keys should be at least 2048 bits *(sev=MEDIUM, conf=HIGH)*
-### gosec-g404 → G404- Line 10: Use of weak random number generator (math/rand or math/rand/v2 instead of crypto *(sev=HIGH, conf=MEDIUM)*
-### gosec-g405 → G405- Line 11: Use of weak cryptographic primitive *(sev=MEDIUM, conf=HIGH)*
-### gosec-g406 → G406- Line 10: Use of deprecated weak cryptographic primitive *(sev=MEDIUM, conf=HIGH)*
-### gosec-g407 → G407- Line 13: Use of hardcoded IV/nonce for encryption by passing hardcoded slice/array by pas *(sev=HIGH, conf=HIGH)*
-### gosec-g408 → G408- Line 11: Stateful misuse of ssh.PublicKeyCallback leading to auth bypass *(sev=HIGH, conf=HIGH)*
-### gosec-g501 → G501- Line 4: Blocklisted import crypto/md5: weak cryptographic primitive *(sev=MEDIUM, conf=HIGH)*
-### gosec-g502 → G502- Line 4: Blocklisted import crypto/des: weak cryptographic primitive *(sev=MEDIUM, conf=HIGH)*
-### gosec-g503 → G503- Line 4: Blocklisted import crypto/rc4: weak cryptographic primitive *(sev=MEDIUM, conf=HIGH)*
-### gosec-g504 → G504- Line 5: Blocklisted import net/http/cgi: Go versions < 1.6.3 are vulnerable to Httpoxy a *(sev=MEDIUM, conf=HIGH)*
-### gosec-g505 → G505- Line 4: Blocklisted import crypto/sha1: weak cryptographic primitive *(sev=MEDIUM, conf=HIGH)*
-### gosec-g506 → G506- Line 6: Blocklisted import golang.org/x/crypto/md4: deprecated and weak cryptographic pr *(sev=MEDIUM, conf=HIGH)*
-### gosec-g507 → G507- Line 6: Blocklisted import golang.org/x/crypto/ripemd160: deprecated and weak cryptograp *(sev=MEDIUM, conf=HIGH)*
-### gosec-g601 → G601- Line 9: Implicit memory aliasing in for loop. *(sev=MEDIUM, conf=MEDIUM)*
-### gosec-g602 → G602- Line 7: slice bounds out of range *(sev=LOW, conf=HIGH)*
-### gosec-g701 → G701- Line 14: SQL injection via taint analysis *(sev=HIGH, conf=HIGH)*
-### gosec-g702 → G702- Line 11: Command injection via taint analysis *(sev=HIGH, conf=HIGH)*
-### gosec-g703 → G703- Line 11: Path traversal via taint analysis *(sev=HIGH, conf=HIGH)*
-### gosec-g704 → G704- Line 11: SSRF via taint analysis *(sev=HIGH, conf=HIGH)*
-### gosec-g705 → G705- Line 12: XSS via taint analysis *(sev=MEDIUM, conf=HIGH)*
-### gosec-g706 → G706- Line 10: Log injection via taint analysis *(sev=LOW, conf=HIGH)*
-### gosec-g707 → G707- Line 13: SMTP command/header injection via taint analysis *(sev=HIGH, conf=HIGH)*
-### gosec-g708 → G708- Line 11: Server-side template injection via taint analysis *(sev=HIGH, conf=HIGH)*
-### gosec-g709 → G709- Line 16: Unsafe deserialization of untrusted data via taint analysis *(sev=HIGH, conf=HIGH)*
+| Rule | Old Definition (OPA targets) | Current gosec Definition |
+|------|------------------------------|--------------------------|
+| G113 | `math/big.Rat.SetString` large exponent | Transfer-Encoding + Content-Length request smuggling |
+| G119 | Non-crypto PRNG (`math/rand`) | Unsafe redirect policy propagating sensitive headers |
+| G121 | `big.Int.GCD` with zero value | Overbroad `AddInsecureBypassPattern` |
+| G122 | `reflect.SliceHeader` / `StringHeader` | `filepath.Walk` TOCTOU symlink traversal |
+| G123 | `encoding/asn1` deprecated import | TLS `VerifyPeerCertificate` without `VerifyConnection` |
 
----
+**Action required:** Update `opa-gosec/rules/g113.rego`, `g119.rego`, `g121.rego`, `g122.rego`,
+and `g123.rego` to implement the current gosec semantics.
 
-## Notes
+### AST / Data-Flow Rules (4 rules)
 
-- **G307** requires a gosec config file: `echo '{"G307":"0600"}' > config.json && GOWORK=off gosec -conf config.json ./...`
-- **G106**, **G406**, **G408**, **G506**, **G507** use `golang.org/x/crypto` — gosec reports an SSA import warning but still finds the target rule.
-- Fixtures for taint-analysis rules (G701–G709) also trigger G104/G114 co-findings because they use `http.ListenAndServe` and bare error discards to wire up the vulnerable HTTP handler.
-- All fixtures use `go 1.21` to ensure Go 1.22 range-variable semantics do not suppress G601 findings.
+Rules G104, G109, G601, and G602 require analysis that cannot be replicated with
+string/regex pattern matching over raw source text:
 
----
+- **G104** — Detecting unhandled errors on bare function calls (no `_, err :=`) requires
+  knowing the function signature returns an `error`. Rego can only detect the assignment pattern.
+- **G109** — Narrowing `strconv.Atoi` result to `int16`/`int32` requires type inference.
+- **G601** — Loop-variable aliasing detection is Go-version-aware (changed in 1.22) and
+  requires understanding loop semantics, not just syntax.
+- **G602** — Out-of-bounds slice access requires range / data-flow tracking.
 
-## How to Re-run
+These rules may be partially detectable via more specific AST-export hooks in a future
+Vulnetix SAST engine version.
 
-```bash
-cd sast-rule-evals/go
-for dir in gosec-g*/; do
-  rule=$(basename "$dir")
-  (cd "$dir" && GOWORK=off gosec -fmt=json ./...) > /tmp/gosec-${rule}.json
-done
-```
+### Configuration-Dependent Rules (1 rule)
 
-For G307 specifically:
-```bash
-cd sast-rule-evals/go/gosec-g307
-echo '{"G307":"0600"}' > config.json
-GOWORK=off gosec -conf config.json -fmt=json ./...
-```
+- **G303** — The Rego rule matches `os.CreateTemp` with an empty first argument. The fixture
+  uses `os.Create("/tmp/...")` (explicit `/tmp/` path). The patterns are consistent with
+  different sub-variants of the same CWE-378 pattern; both fixtures are valid.
+- **G307** — gosec requires an external `config.json` to set the expected permission mask.
+  The Rego rule fires unconditionally on `os.Create` calls, which gosec only flags when
+  configured. This is a valid static detection; gosec's config-gated approach means it is
+  silent without the config file.
+
+### gosec Fixture Notes
+
+- **G106**: Reports an SSA import warning alongside findings; treated as detected when
+  at least one finding is present.
+- **G406 / G408 / G506 / G507**: Depend on `golang.org/x/crypto`; fixtures use
+  `GOWORK=off go mod tidy` to fetch the dependency.

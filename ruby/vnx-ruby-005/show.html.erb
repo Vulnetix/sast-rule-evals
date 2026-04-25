@@ -1,0 +1,3 @@
+<!-- VNX-RUBY-005: XSS via html_safe -->
+<div><%= @user_input.html_safe %></div>
+<div><%= raw @comment %></div>

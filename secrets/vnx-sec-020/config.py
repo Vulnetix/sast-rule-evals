@@ -1,0 +1,2 @@
+# VNX-SEC-020: GitLab access token
+GITLAB_TOKEN = "glpat-ABCDEFGHIJKLMNOPQRSTUv"
