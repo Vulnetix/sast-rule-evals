@@ -1,0 +1,15 @@
+# Sample for Ruff rule B901: return-in-generator
+# This file is designed to trigger the B901 rule.
+# Run: ruff check --select B901 <this_file>
+
+from collections.abc import Iterable
+from pathlib import Path
+
+
+def get_file_paths(file_types: Iterable[str] | None = None) -> Iterable[Path]:
+    dir_path = Path(".")
+    if file_types is None:
+        return dir_path.glob("*")
+
+    for file_type in file_types:
+        yield from dir_path.glob(f"*.{file_type}")
