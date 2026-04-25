@@ -3,5 +3,4 @@
 # Run: ruff check --select B028 <this_file>
 
 import warnings
-warnings.warn("old function")  # B028: missing stacklevel
-
+warnings.warn("deprecated function, use new_function instead")  # B028: no level
