@@ -1,12 +1,9 @@
 package main
 
-import (
-	"fmt"
-	"os"
-)
+import "os"
 
 func main() {
-	// G104: Errors unhandled — error return value discarded
-	f, _ := os.Open("/etc/passwd")
-	fmt.Println(f)
+	// G104: Errors unhandled — error return value not captured at all
+	os.Remove("/tmp/test")
+	os.Mkdir("/tmp/testdir", 0755)
 }

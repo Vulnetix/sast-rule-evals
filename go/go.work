@@ -12,7 +12,18 @@ use (
 	./gosec-g110
 	./gosec-g111
 	./gosec-g112
+	./gosec-g113
 	./gosec-g114
+	./gosec-g115
+	./gosec-g116
+	./gosec-g117
+	./gosec-g118
+	./gosec-g119
+	./gosec-g120
+	./gosec-g121
+	./gosec-g122
+	./gosec-g123
+	./gosec-g124
 	./gosec-g201
 	./gosec-g202
 	./gosec-g203
@@ -23,19 +34,33 @@ use (
 	./gosec-g304
 	./gosec-g305
 	./gosec-g306
+	./gosec-g307
 	./gosec-g401
 	./gosec-g402
 	./gosec-g403
 	./gosec-g404
 	./gosec-g405
+	./gosec-g406
+	./gosec-g407
+	./gosec-g408
 	./gosec-g501
 	./gosec-g502
 	./gosec-g503
 	./gosec-g504
 	./gosec-g505
+	./gosec-g506
+	./gosec-g507
+	./gosec-g601
+	./gosec-g602
 	./gosec-g701
+	./gosec-g702
+	./gosec-g703
 	./gosec-g704
 	./gosec-g705
+	./gosec-g706
+	./gosec-g707
+	./gosec-g708
+	./gosec-g709
 	./vnx-go-001
 	./vnx-go-002
 	./vnx-go-003

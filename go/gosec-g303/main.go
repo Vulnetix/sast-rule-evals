@@ -6,8 +6,8 @@ import (
 )
 
 func main() {
-	// G303: Predictable tempfile — empty dir defaults to os.TempDir()
-	f, err := os.CreateTemp("", "myapp-*.tmp")
+	// G303: Creating file in shared tmp directory without ioutil.TempFile
+	f, err := os.Create("/tmp/myapp-data.tmp")
 	if err != nil {
 		panic(err)
 	}
