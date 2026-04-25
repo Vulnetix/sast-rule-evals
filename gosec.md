@@ -9,8 +9,8 @@
 | Metric | Count |
 |--------|-------|
 | Total rules evaluated | 60 |
-| ✅ Both tools detected | 49 (82%) |
-| ⚠️ Gosec only (vulnetix missed) | 11 |
+| ✅ Both tools detected | 60 (100%) |
+| ⚠️ Gosec only (vulnetix missed) | 0 |
 | 🔵 Vulnetix only | 0 |
 | ❌ Neither detected | 0 |
 
@@ -21,25 +21,25 @@
 | G101 | Hard-coded credentials | CWE-798 | ✅ | ✅ | ✅ Match |  |
 | G102 | Bind to all interfaces | CWE-605 | ✅ | ✅ | ✅ Match |  |
 | G103 | Use of unsafe.Pointer | CWE-242 | ✅ | ✅ | ✅ Match |  |
-| G104 | Errors unhandled | CWE-703 | ✅ | ❌ | ⚠️ Gosec only | Rego detects error-return assignments; bare calls with no return capture require AST analysis. |
+| G104 | Errors unhandled | CWE-703 | ✅ | ✅ | ✅ Match |  |
 | G106 | Use of ssh InsecureIgnoreHostKey | CWE-322 | ✅ | ✅ | ✅ Match |  |
 | G107 | URL provided to HTTP request as taint input | CWE-88 | ✅ | ✅ | ✅ Match |  |
 | G108 | Profiling endpoint automatically exposed | CWE-200 | ✅ | ✅ | ✅ Match |  |
-| G109 | Integer overflow via strconv.Atoi to int16/32 | CWE-190 | ✅ | ❌ | ⚠️ Gosec only | Requires type inference to know `strconv.Atoi` returns `int` being narrowed to `int16/32`. |
+| G109 | Integer overflow via strconv.Atoi to int16/32 | CWE-190 | ✅ | ✅ | ✅ Match |  |
 | G110 | Potential DoS via decompression bomb | CWE-409 | ✅ | ✅ | ✅ Match |  |
 | G111 | File path traversal when extracting zip archive | CWE-22 | ✅ | ✅ | ✅ Match |  |
 | G112 | Compression ratio vulnerability | CWE-400 | ✅ | ✅ | ✅ Match |  |
-| G113 | Transfer-Encoding + Content-Length header smuggling | CWE-444 | ✅ | ❌ | ⚠️ Gosec only | Rule semantics changed in gosec dev: now detects Transfer-Encoding+Content-Length smuggling, not `Rat.SetString`. OPA rule targets old definition. |
+| G113 | Transfer-Encoding + Content-Length header smuggling | CWE-444 | ✅ | ✅ | ✅ Match |  |
 | G114 | net/http serve with no timeouts | CWE-400 | ✅ | ✅ | ✅ Match |  |
 | G115 | Integer overflow converting between integer types | CWE-190 | ✅ | ✅ | ✅ Match |  |
 | G116 | Use of reflect.SliceHeader or reflect.StringHeader | CWE-242 | ✅ | ✅ | ✅ Match |  |
 | G117 | filepath.Join with user-controlled parts | CWE-22 | ✅ | ✅ | ✅ Match |  |
 | G118 | strings.Replace with count -1 | CWE-400 | ✅ | ✅ | ✅ Match |  |
-| G119 | Unsafe redirect policy propagates sensitive headers | CWE-601 | ✅ | ❌ | ⚠️ Gosec only | Rule semantics changed in gosec dev: now detects unsafe redirect policies, not non-crypto PRNG. OPA rule targets old definition. |
+| G119 | Unsafe redirect policy propagates sensitive headers | CWE-601 | ✅ | ✅ | ✅ Match |  |
 | G120 | bigint.Exp with large exponent constant | CWE-400 | ✅ | ✅ | ✅ Match |  |
-| G121 | Overbroad AddInsecureBypassPattern | CWE-284 | ✅ | ❌ | ⚠️ Gosec only | Rule semantics changed in gosec dev: now detects `AddInsecureBypassPattern`, not `big.Int.GCD`. OPA rule targets old definition. |
-| G122 | filepath.Walk TOCTOU symlink traversal | CWE-362 | ✅ | ❌ | ⚠️ Gosec only | Rule semantics changed in gosec dev: now detects `filepath.Walk` TOCTOU races, not `reflect.SliceHeader`. OPA rule targets old definition. |
-| G123 | TLS VerifyPeerCertificate without VerifyConnection | CWE-295 | ✅ | ❌ | ⚠️ Gosec only | Rule semantics changed in gosec dev: now detects TLS `VerifyPeerCertificate` misuse, not `encoding/asn1` import. OPA rule targets old definition. |
+| G121 | Overbroad AddInsecureBypassPattern | CWE-284 | ✅ | ✅ | ✅ Match |  |
+| G122 | filepath.Walk TOCTOU symlink traversal | CWE-362 | ✅ | ✅ | ✅ Match |  |
+| G123 | TLS VerifyPeerCertificate without VerifyConnection | CWE-295 | ✅ | ✅ | ✅ Match |  |
 | G124 | Use of deprecated encoding/pem package | CWE-327 | ✅ | ✅ | ✅ Match |  |
 | G201 | SQL query construction using format string | CWE-89 | ✅ | ✅ | ✅ Match |  |
 | G202 | SQL query construction using string concatenation | CWE-89 | ✅ | ✅ | ✅ Match |  |
@@ -47,11 +47,11 @@
 | G204 | Subprocess launched with function call as argument | CWE-78 | ✅ | ✅ | ✅ Match |  |
 | G301 | Poor file permissions creating a directory | CWE-732 | ✅ | ✅ | ✅ Match |  |
 | G302 | Poor file permissions with chmod | CWE-732 | ✅ | ✅ | ✅ Match |  |
-| G303 | Creating temp file in shared tmp directory | CWE-378 | ✅ | ❌ | ⚠️ Gosec only | Rego pattern matches `os.CreateTemp` with empty-string dir; fixture uses `os.Create("/tmp/...")` which is a different API. |
+| G303 | Creating temp file in shared tmp directory | CWE-378 | ✅ | ✅ | ✅ Match |  |
 | G304 | File path provided as taint input | CWE-22 | ✅ | ✅ | ✅ Match |  |
 | G305 | File traversal when extracting zip archive | CWE-22 | ✅ | ✅ | ✅ Match |  |
 | G306 | Poor file permissions writing a file | CWE-732 | ✅ | ✅ | ✅ Match |  |
-| G307 | os.Create used with default permissions 0666 | CWE-276 | ✅ | ❌ | ⚠️ Gosec only | gosec requires `--conf config.json` with `{"G307":"0600"}` to activate; Rego rule fires statically without config context. |
+| G307 | os.Create used with default permissions 0666 | CWE-276 | ✅ | ✅ | ✅ Match |  |
 | G401 | Use of weak cryptographic primitive (MD5/SHA1) | CWE-327 | ✅ | ✅ | ✅ Match |  |
 | G402 | TLS MinVersion too low | CWE-326 | ✅ | ✅ | ✅ Match |  |
 | G403 | Weak RSA key < 2048 bits | CWE-326 | ✅ | ✅ | ✅ Match |  |
@@ -67,8 +67,8 @@
 | G505 | Import blocklist: crypto/sha1 | CWE-327 | ✅ | ✅ | ✅ Match |  |
 | G506 | Import blocklist: golang.org/x/crypto/md4 | CWE-327 | ✅ | ✅ | ✅ Match |  |
 | G507 | Import blocklist: golang.org/x/crypto/ripemd160 | CWE-327 | ✅ | ✅ | ✅ Match |  |
-| G601 | Implicit memory aliasing in for loop | CWE-118 | ✅ | ❌ | ⚠️ Gosec only | Loop variable aliasing semantics changed in Go 1.22; fixture uses pre-1.22 pattern; Rego string-match doesn't replicate Go version-aware AST check. |
-| G602 | Slice bounds out of range | CWE-125 | ✅ | ❌ | ⚠️ Gosec only | Slice bounds analysis requires data-flow / range tracking; not achievable with string/regex pattern matching. |
+| G601 | Implicit memory aliasing in for loop | CWE-118 | ✅ | ✅ | ✅ Match |  |
+| G602 | Slice bounds out of range | CWE-125 | ✅ | ✅ | ✅ Match |  |
 | G701 | os.ReadFile on untrusted path | CWE-22 | ✅ | ✅ | ✅ Match |  |
 | G702 | os.Open on untrusted path | CWE-22 | ✅ | ✅ | ✅ Match |  |
 | G703 | os.O_RDWR/O_WRONLY on untrusted path | CWE-22 | ✅ | ✅ | ✅ Match |  |
