@@ -9,7 +9,7 @@ name: Third-Party Scanners
 
 on:
   schedule:
-    - cron: '6 18 * * 0'
+    - cron: '47 11 * * 3'
   workflow_dispatch:
 
 permissions:
@@ -19,6 +19,7 @@ jobs:
   bandit:
     name: Bandit (Python SAST)
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v5
       - name: Set up uv
@@ -56,6 +57,7 @@ jobs:
   bearer:
     name: Bearer (SAST)
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v5
       - name: Run Bearer
@@ -86,6 +88,7 @@ jobs:
   brakeman:
     name: Brakeman (Ruby on Rails SAST)
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v5
       - name: Set up Ruby
@@ -118,6 +121,7 @@ jobs:
   cdxgen:
     name: cdxgen (multi-ecosystem SBOM)
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v5
       - name: Set up Node.js
@@ -149,6 +153,7 @@ jobs:
   checkov:
     name: Checkov (IaC)
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v5
       - name: Set up uv
@@ -178,6 +183,7 @@ jobs:
   clippy:
     name: Rust Clippy (SAST)
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v5
       - name: Run Clippy
@@ -206,6 +212,7 @@ jobs:
   cppcheck:
     name: Cppcheck (C/C++ SAST)
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v5
       - name: Run Cppcheck
@@ -258,6 +265,7 @@ jobs:
   cyclonedx-go:
     name: CycloneDX Go SBOM
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v5
       - name: Set up Go
@@ -297,6 +305,7 @@ jobs:
   cyclonedx-maven:
     name: CycloneDX Maven (SBOM)
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v5
       - name: Set up Java
@@ -336,6 +345,7 @@ jobs:
   cyclonedx-node:
     name: CycloneDX npm SBOM
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v5
       - name: Set up Node.js
@@ -368,6 +378,7 @@ jobs:
   cyclonedx-php:
     name: CycloneDX PHP SBOM
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v5
       - name: Set up PHP
@@ -401,6 +412,7 @@ jobs:
   cyclonedx-ruby:
     name: CycloneDX Ruby SBOM
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v5
       - name: Set up Ruby
@@ -433,6 +445,7 @@ jobs:
   cyclonedx-rust:
     name: CycloneDX Rust SBOM
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v5
       - name: Generate Rust CycloneDX SBOM
@@ -460,6 +473,7 @@ jobs:
   detect-secrets:
     name: detect-secrets (secrets)
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v5
       - name: Set up uv
@@ -573,6 +587,7 @@ jobs:
   detekt:
     name: detekt (Kotlin SAST)
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v5
       - name: Set up Java
@@ -614,6 +629,7 @@ jobs:
   dockle:
     name: Dockle (container image)
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v5
       - name: Set up Go
@@ -659,6 +675,7 @@ jobs:
   eslint:
     name: ESLint (JavaScript lint)
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v5
       - name: Set up Node.js
@@ -700,6 +717,7 @@ jobs:
   flawfinder:
     name: Flawfinder (C/C++ SAST)
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v5
       - name: Set up uv
@@ -742,6 +760,7 @@ jobs:
   github-sbom:
     name: GitHub SBOM (SPDX)
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v5
       - name: Export the dependency graph
@@ -773,6 +792,7 @@ jobs:
   gitleaks:
     name: Gitleaks (Secrets)
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v5
       - name: Run Gitleaks
@@ -798,6 +818,7 @@ jobs:
   golangci-lint:
     name: golangci-lint (Go lint)
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v5
       - name: Set up Go
@@ -837,6 +858,7 @@ jobs:
   gosec:
     name: gosec (Go SAST)
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v5
       - name: Set up Go
@@ -876,6 +898,7 @@ jobs:
   govulncheck:
     name: govulncheck (Go SCA)
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v5
       - name: Set up Go
@@ -920,6 +943,7 @@ jobs:
   grype:
     name: Grype (SCA)
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v5
       - name: Run Grype
@@ -946,6 +970,7 @@ jobs:
   grype-image:
     name: Grype image (OCI)
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v5
       - name: Build the image
@@ -997,6 +1022,7 @@ jobs:
   hadolint:
     name: Hadolint (Dockerfile)
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v5
       - name: Run Hadolint
@@ -1018,6 +1044,7 @@ jobs:
   kics:
     name: KICS (IaC)
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v5
       - name: Run KICS
@@ -1038,6 +1065,7 @@ jobs:
   mobsfscan:
     name: mobsfscan (Mobile SAST)
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v5
       - name: Set up uv
@@ -1073,6 +1101,7 @@ jobs:
   njsscan:
     name: njsscan (Node SAST)
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v5
       - name: Set up uv
@@ -1110,6 +1139,7 @@ jobs:
   noseyparker:
     name: Nosey Parker (secrets)
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v5
       - name: Run Nosey Parker
@@ -1143,6 +1173,7 @@ jobs:
   npm-audit:
     name: npm audit (Node SCA)
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v5
       - name: Set up Node.js
@@ -1176,6 +1207,7 @@ jobs:
   opengrep:
     name: OpenGrep (SAST)
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v5
       - name: Run OpenGrep
@@ -1209,6 +1241,7 @@ jobs:
   osv-scanner:
     name: OSV-Scanner (SCA)
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v5
       - name: Run OSV-Scanner
@@ -1230,6 +1263,7 @@ jobs:
   owasp-dependency-check:
     name: OWASP Dependency-Check (SCA)
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
+    timeout-minutes: 330
     steps:
       - uses: actions/checkout@v5
       - name: Set up Java
@@ -1238,6 +1272,13 @@ jobs:
         with:
           distribution: temurin
           java-version: 21
+      - name: Restore the NVD database
+        continue-on-error: true
+        uses: actions/cache@v4
+        with:
+          key: 'dependency-check-nvd-${{ github.run_id }}'
+          path: '${{ runner.temp }}/dependency-check-data'
+          restore-keys: dependency-check-nvd-
       - name: Run OWASP Dependency-Check
         continue-on-error: true
         env:
@@ -1248,8 +1289,13 @@ jobs:
           version=$(curl -fsSL https://api.github.com/repos/jeremylong/DependencyCheck/releases/latest | jq -r '.tag_name | ltrimstr("v")')
           curl -fsSL "https://github.com/jeremylong/DependencyCheck/releases/download/v${version}/dependency-check-${version}-release.zip" -o dependency-check.zip
           unzip -q dependency-check.zip
-          mkdir -p dependency-check-out
-          args=(--scan . --format SARIF --out dependency-check-out)
+          data_dir="${RUNNER_TEMP:-$PWD}/dependency-check-data"
+          mkdir -p dependency-check-out "$data_dir"
+          # --data points at the cached NVD database, kept outside the working tree so it
+          # is not itself scanned. On an ephemeral runner with no cache Dependency-Check
+          # downloads the whole of the NVD before it scans anything, which is a five-hour
+          # job on its own; with the previous run's copy restored it applies the delta.
+          args=(--scan . --format SARIF --out dependency-check-out --data "$data_dir")
           if [ -n "${NVD_API_KEY:-}" ]; then
             args+=(--nvdApiKey "$NVD_API_KEY")
           fi
@@ -1273,6 +1319,7 @@ jobs:
   pmd:
     name: PMD (Java SAST)
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v5
       - name: Run PMD
@@ -1293,6 +1340,7 @@ jobs:
   psalm:
     name: Psalm (PHP SAST)
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v5
       - name: Set up PHP
@@ -1335,6 +1383,7 @@ jobs:
   regula:
     name: Regula (IaC policy)
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v5
       - name: Run Regula
@@ -1367,6 +1416,7 @@ jobs:
   retirejs:
     name: Retire.js (JavaScript SCA)
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v5
       - name: Set up Node.js
@@ -1398,6 +1448,7 @@ jobs:
   rubocop:
     name: RuboCop (Ruby lint)
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v5
       - name: Set up Ruby
@@ -1525,6 +1576,7 @@ jobs:
   ruff:
     name: Ruff (Python lint)
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v5
       - name: Set up uv
@@ -1562,6 +1614,7 @@ jobs:
   scancode:
     name: ScanCode Toolkit (license SBOM)
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v5
       - name: Set up uv
@@ -1619,6 +1672,7 @@ jobs:
   semgrep:
     name: Semgrep (SAST)
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v5
       - name: Set up uv
@@ -1648,6 +1702,7 @@ jobs:
   shellcheck:
     name: ShellCheck (shell lint)
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v5
       - name: Run ShellCheck
@@ -1770,6 +1825,7 @@ jobs:
   swiftlint:
     name: SwiftLint (Swift lint)
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v5
       - name: Run SwiftLint
@@ -1801,6 +1857,7 @@ jobs:
   syft:
     name: Syft (CycloneDX SBOM)
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v5
       - name: Generate CycloneDX SBOM
@@ -1822,6 +1879,7 @@ jobs:
   syft-image:
     name: Syft image (CycloneDX SBOM)
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v5
       - name: Build the image
@@ -1870,6 +1928,7 @@ jobs:
   terrascan:
     name: Terrascan (Terraform)
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v5
       - name: Run Terrascan
@@ -1905,6 +1964,7 @@ jobs:
   tflint:
     name: TFLint (Terraform)
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v5
       - name: Run TFLint
@@ -1940,6 +2000,7 @@ jobs:
   tfsec:
     name: tfsec (Terraform)
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v5
       - name: Run tfsec
@@ -1958,6 +2019,7 @@ jobs:
   trivy-config:
     name: Trivy config (IaC/Dockerfile)
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v5
       - name: Trivy config
@@ -1979,6 +2041,7 @@ jobs:
   trivy-fs:
     name: Trivy (filesystem CDX + SARIF)
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v5
       - name: Trivy filesystem (CycloneDX)
@@ -2010,6 +2073,7 @@ jobs:
   trivy-image:
     name: Trivy image (OCI)
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v5
       - name: Build the image
@@ -2059,6 +2123,7 @@ jobs:
   trufflehog:
     name: TruffleHog (secrets)
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v5
       - name: Run TruffleHog
@@ -2186,6 +2251,7 @@ jobs:
   zizmor:
     name: zizmor (GitHub Actions SAST)
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v5
       - name: Set up uv
@@ -2227,6 +2293,7 @@ jobs:
   publish:
     name: Publish to Vulnetix
     runs-on: [self-hosted, Linux, X64, vulnetix-local]
+    timeout-minutes: 30
     needs: [bandit, bearer, brakeman, cdxgen, checkov, clippy, cppcheck, cyclonedx-go, cyclonedx-maven, cyclonedx-node, cyclonedx-php, cyclonedx-ruby, cyclonedx-rust, detect-secrets, detekt, dockle, eslint, flawfinder, github-sbom, gitleaks, golangci-lint, gosec, govulncheck, grype, grype-image, hadolint, kics, mobsfscan, njsscan, noseyparker, npm-audit, opengrep, osv-scanner, owasp-dependency-check, pmd, psalm, regula, retirejs, rubocop, ruff, scancode, semgrep, shellcheck, swiftlint, syft, syft-image, terrascan, tflint, tfsec, trivy-config, trivy-fs, trivy-image, trufflehog, zizmor]
     if: always()
     permissions:
